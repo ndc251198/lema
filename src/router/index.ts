@@ -30,6 +30,10 @@ const routes: Array<RouteConfig> = [
         component: () => import("@/views/main/dictionary/Accountan.vue")
       },
       {
+        path: "hotel/:id",
+        component: () => import("@/views/main/dictionary/Hotel.vue")
+      },
+      {
         path: "",
         redirect: "infomation"
       }

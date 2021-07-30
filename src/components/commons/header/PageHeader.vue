@@ -6,6 +6,7 @@
       <lema-toolbar-title>
         
       </lema-toolbar-title>
+      <lema-btn dense flat round icon="home" @click="btnToggleSideNaveOnClick" />
     </lema-toolbar>
   </lema-header>
 </template>
