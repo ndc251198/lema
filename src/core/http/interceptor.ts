@@ -16,7 +16,7 @@ export default function() {
     },
     (error: AxiosError) => {
       if (Number(error.code) === HttpStatus.Unauthorized) {
-
+        console.log(error);
       }
       return Promise.reject(error.code);
     }

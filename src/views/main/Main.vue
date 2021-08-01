@@ -1,5 +1,5 @@
 <template>
-  <lema-layout view="hHh lpR fFf">
+  <lema-layout view="lHh lpR fFf">
     <page-header @toggle="headerOnToggle"></page-header>
 
     <side-nav :mini="mini"></side-nav>

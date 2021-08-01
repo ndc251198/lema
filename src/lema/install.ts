@@ -1,12 +1,11 @@
 import { DirectiveOptions } from "vue";
 import { Vue as _Vue } from "vue/types/vue";
 import { LemaConfig } from "./lema";
-
-const $lema: LemaVue = {
-  config: {},
-};
+import { Configuration } from "./plugins/configuration";
 
 export interface LemaVue {
+  config: Configuration;
+
   [key: string]: any;
 }
 
@@ -18,6 +17,11 @@ export interface LemaPlugin {
   install(param: {$lema: LemaVue; cfg: LemaConfig}): void;
 }
 
+export interface LemaFilter {
+  name: string;
+  definition: Function | undefined;
+}
+
 export interface Config {
   directives: {
     [key: string]: LemaDirective;
@@ -27,11 +31,26 @@ export interface Config {
     [key: string]: LemaPlugin;
   };
 
+  filters: {
+    [key: string]: LemaFilter;
+  };
+
   config: LemaConfig | undefined;
 }
 
 export default function(Vue: typeof _Vue, opts: Config) {
-  const cfg = $lema.config = opts.config || {};
+  const $lema = {} as LemaVue;
+
+  const cfg = opts.config || {};
+
+  if(opts.filters) {
+    Object.keys(opts.filters).forEach(key => {
+      const f = opts.filters[key];
+      if (f.name !== undefined) {
+        Vue.filter(f.name, f.definition);
+      }
+    })
+  }
 
   opts.directives && Object.keys(opts.directives).forEach((key) => {
     const d = opts.directives[key];
@@ -49,4 +68,6 @@ export default function(Vue: typeof _Vue, opts: Config) {
       }
     })
   }
+
+  Vue.prototype.$lema = $lema
 }
