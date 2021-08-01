@@ -23,7 +23,7 @@ export interface Config {
     [key: string]: LemaDirective;
   };
 
-  plugins: {
+  plugins: { 
     [key: string]: LemaPlugin;
   };
 
