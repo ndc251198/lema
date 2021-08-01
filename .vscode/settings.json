@@ -1,0 +1,18 @@
+{
+  "vetur.grammar.customBlocks": {
+    "docs": "md",
+    "i18n": "json"
+  },
+  "vetur.format.options.tabSize": 2,
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "force-expand-multiline"
+    },
+    "prettyhtml": {
+      "printWidth": 100,
+      "singleQuote": false,
+      "wrapAttributes": false,
+      "sortAttributes": false
+    }
+  }
+}

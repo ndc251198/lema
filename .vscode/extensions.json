@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "octref.vetur",
+    "syler.sass-indented",
+    "ecmel.vscode-html-css"
+  ]
+}
