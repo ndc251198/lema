@@ -38,6 +38,7 @@
             push
             size="sm"
             v-close-popup
+            @click="logout"
           />
         </div>
       </div>
@@ -51,6 +52,11 @@ export default {
     name: 'AccountSetting',
   data () {
     return {
+    }
+  },
+  methods: {
+    logout () {
+      this.$router.push(`/login`)
     }
   }
 }
