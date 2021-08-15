@@ -1,7 +1,8 @@
 import { PluginObject } from "vue";
 import LemaInstall from "./install";
 import plugins from "./plugins";
-import directives from './directives'
+import directives from './directives';
+import filters from './filters';
 
 export interface LemaConfig {
   [key: string]: any;
@@ -12,6 +13,7 @@ export default {
     LemaInstall(Vue, {
       directives,
       plugins,
+      filters,
       config: opts
     })
   }

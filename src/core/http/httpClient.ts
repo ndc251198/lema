@@ -33,7 +33,7 @@ class HttpClient {
     });
   }
 
-  download(url: string, data?: any, callback?: (event: ProgressEvent) => void, config?: AxiosRequestConfig) {
+  download(url: string, data?: any, callback?: (event: ProgressEvent) => void) {
     return Vue.axios.post(url, data, {
       onDownloadProgress: callback
     });

@@ -1,15 +1,11 @@
 <template>
-  <lema-layout view="hHh lpR fFf">
+  <lema-layout view="lHh lpR fFf">
     <page-header @toggle="headerOnToggle"></page-header>
 
     <side-nav :mini="mini"></side-nav>
 
     <lema-page-container class="lema-page-container">
-      <lema-scroll-area class="fit">
-        <div class="q-pa-4 h-100">
-          <router-view />
-        </div>
-      </lema-scroll-area>
+      <router-view />
     </lema-page-container>
   </lema-layout>
 </template>

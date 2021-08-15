@@ -94,10 +94,21 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .lema-drawer ::v-deep {
   .q-router-link--active {
+    color: #fff;
     .q-focus-helper {
       background: currentColor;
       opacity: 0.15;
     }
+  }
+
+  .q-item {
+    min-height: 64px;
+  }
+
+  .q-drawer {
+    background-color: $primary;
+    background-color: var(--q-color-primary);
+    color: #fff;
   }
 }
 </style>
