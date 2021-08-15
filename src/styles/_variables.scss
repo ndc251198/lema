@@ -489,13 +489,17 @@ $generic-hover-transition       : .3s cubic-bezier(.25, .8, .5, 1) !default;
 $typography-font-family         : 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
 $min-line-height                : 1.12 !default;
 
-$button-border-radius           : 3px !default;
-$button-padding                 : 4px 16px !default;
+$control-height: 36px;
+$control-padding-x: 16px;
+$control-padding-y: 4px;
+
+$button-border-radius           : 6px !default;
+$button-padding                 : $control-padding-y $control-padding-x !default;
 $button-dense-padding           : .285em !default;
 $button-transition              : $generic-hover-transition !default;
-$button-font-size               : 14px !default;
-$button-line-height             : 1.715em !default;
-$button-font-weight             : 500 !default;
+$button-font-size               : $body-font-size;
+$button-line-height             : $body-line-height * $body-font-size;
+$button-font-weight             : 400 !default;
 $button-shadow                  : $shadow-2 !default;
 $button-shadow-active           : $shadow-5 !default;
 $button-rounded-border-radius   : 28px !default;

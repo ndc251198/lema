@@ -7,8 +7,8 @@ import axios from "axios";
 import VueI18n from "vue-i18n";
 import appInitial from "./appInitial";
 
-import "@/styles/styles.scss";
 import "@/quasar";
+import "@/styles/styles.scss";
 import "@/lema";
 import "@/extension-methods";
 import "@/controls";

@@ -7,6 +7,10 @@ export default QInput.extend({
     dense: {
       type: Boolean,
       default: true
+    },
+
+    outlined: {
+      default: true
     }
   }
 });
