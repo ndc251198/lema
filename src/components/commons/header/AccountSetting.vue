@@ -46,8 +46,6 @@
   </div>
 </template>
 <script>
-
-
 export default {
     name: 'AccountSetting',
   data () {

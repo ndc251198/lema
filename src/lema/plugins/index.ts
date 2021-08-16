@@ -1,5 +1,5 @@
-import { LemaPlugin } from '../install';
+import configuration from './configuration';
 
 export default {
-  
-} as {[key: string]: LemaPlugin}
+  configuration
+}

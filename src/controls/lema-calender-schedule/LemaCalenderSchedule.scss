@@ -1,0 +1,78 @@
+$border-color: #CDDAE7;
+
+@mixin common {
+  .lema-calender-schedule {
+
+  }
+}
+
+@mixin playgroud {
+  .lema-calender-schedule-playgroud {
+    .lema-playgroud {
+      &__cell {
+        display: flex;
+        align-items: center;
+        padding: 0 $control-padding-x;
+        border-right: 1px solid $border-color;
+      }
+      &__body, &__header {
+        .lema-playgroud__cell {
+          border-bottom: 1px solid $border-color;
+        }
+      }
+      &__header {
+        &--axis, &--item {
+          position: sticky;
+          background: #fff;
+          top: 0;
+          justify-content: center;
+        }
+        &--axis {
+          left: 0;
+          z-index: 1;
+        }
+      }
+      &__body {
+        &--axis {
+          position: sticky;
+          background: #fff;
+          left: 0;
+          z-index: 1;
+        }
+      }
+
+      &__time-line {
+        border-left: 1px dashed rgb(255, 55, 0);
+        bottom: 0;
+        &__tooltip {
+          position: absolute;
+          top: 0;
+          left: 4px;
+          background-color: rgb(255, 55, 0);
+          color: #fff;
+          border-radius: 4px;
+          font-size: 10px;
+          padding: 2px 4px;
+        }
+      }
+    }
+  }
+}
+
+@mixin item {
+  .lema-calender-schedule-item {
+    position: absolute;
+    > * {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+@mixin calender-schedule {
+  @include common;
+  @include playgroud;
+  @include item;
+}
+
+@include calender-schedule;
