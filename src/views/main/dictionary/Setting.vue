@@ -1,33 +1,33 @@
 <template>
   
     <div class="q-pa-lg row items-start q-gutter-lg">
-      <div class="col-1">
+      <div class="col">
         <q-card class="my-card text-center" @click="goToHotels">
           <q-card-section >
             <i class="fas fa-bed fa-5x"></i>
           </q-card-section>
           <q-card-section>
-            <label class="">Cau hinh phong</label>
+            <label class="text-weight-bolder">Cau hinh phong</label>
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-1">
+      <div class="col">
         <q-card class="my-card text-center" @click="goToService">
           <q-card-section>
             <i class="fas fa-hand-holding-medical fa-5x"></i>
           </q-card-section>
           <q-card-section>
-            <label class="">Dich vu</label>
+            <label class="text-weight-bolder">Dich vu</label>
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-1">
+      <div class="col">
         <q-card class="my-card text-center" @click="goToPartner">
           <q-card-section>
            <i class="far fa-handshake fa-5x"></i>
           </q-card-section>
           <q-card-section>
-            <label class="">Doi tac</label>
+            <label class="text-weight-bolder">Doi tac</label>
           </q-card-section>
         </q-card>
       </div>
