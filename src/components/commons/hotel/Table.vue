@@ -1,5 +1,6 @@
 <template>
   <div class="table">
+    <div><q-btn class="float-right" color="primary" icon-right="add" label="Create" @click="showCreateRoom=true" /></div>
      <table style="width: 100%" class="space">
           <tr>
             <th>Room id</th>
@@ -38,18 +39,20 @@
           </tr>
           
       </table>
+      <q-dialog persistent v-model="showCreateRoom">
+      <CreateRoom></CreateRoom>
+    </q-dialog>
   </div>
   
 </template>
 <script lang="ts">
+import CreateRoom from '@/components/commons/form/formCreateRoom/CreateRoom.vue'
 import Vue from 'vue'
 export default Vue.extend({
+  components: {CreateRoom},
   data () {
     return {
-      data: [{
-       'SalesQty': 'demo',
-      }  
-      ]
+      showCreateRoom: false
     }
   }
 })

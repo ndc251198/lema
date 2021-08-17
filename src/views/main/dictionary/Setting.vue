@@ -1,51 +1,66 @@
 <template>
-  <div class="setting row">
-    <div v-for='index in 10' :key='index' class="col-4">
-      <div class="q-pa-md">
-      <div class="row">
-        <div class="col-10">
-          <q-card class="my-card " @click="demo1(index)">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-            <div class="absolute-bottom text-subtitle2 text-center">
-              Hotel {{index}}
-            </div>
-            </q-img>
-          </q-card>
-        </div>
-      </div>
-      </div>
-    </div>
-
-    <div class="col-4 q-pa-md">
-      <div class= "row">
-      <q-card class="my-card col-10" >
-          <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle2 text-center">
-            Add
-          </div>
-          </q-img>
+  
+    <div class="q-pa-lg row items-start q-gutter-lg">
+      <div class="col-1">
+        <q-card class="my-card text-center" @click="goToHotels">
+          <q-card-section >
+            <i class="fas fa-bed fa-5x"></i>
+          </q-card-section>
+          <q-card-section>
+            <label class="">Cau hinh phong</label>
+          </q-card-section>
         </q-card>
+      </div>
+      <div class="col-1">
+        <q-card class="my-card text-center" @click="goToService">
+          <q-card-section>
+            <i class="fas fa-hand-holding-medical fa-5x"></i>
+          </q-card-section>
+          <q-card-section>
+            <label class="">Dich vu</label>
+          </q-card-section>
+        </q-card>
+      </div>
+      <div class="col-1">
+        <q-card class="my-card text-center" @click="goToPartner">
+          <q-card-section>
+           <i class="far fa-handshake fa-5x"></i>
+          </q-card-section>
+          <q-card-section>
+            <label class="">Doi tac</label>
+          </q-card-section>
+        </q-card>
+      </div>
+        
+        
+        
     </div>
-    </div>
-  </div>
+  
 </template>
-
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  name: "setting",
   data () {
     return {
+
     }
   },
   methods: {
-    demo1 (id: string) {
-      this.$router.push(`/hotel/${id}`)
-    }
+    goToHotels() {
+      this.$router.push('/hotels')
+    },
+    goToService() {
+      this.$router.push('/services')
+    },
+    goToPartner() {
+      this.$router.push('/partners')
+    },
+    
   }
 })
 </script>
-
-<style lang="sass" scoped>
-
+<style>
+.my-card {
+  width: 100%;
+}
 </style>

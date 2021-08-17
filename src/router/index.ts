@@ -39,6 +39,21 @@ const routes: Array<RouteConfig> = [
         component: () => import("@/views/main/dictionary/CreateForm.vue"),
       },
       {
+        path: "/hotels",
+        name: "Hotels",
+        component: () => import("@/views/main/dictionary/Hotels.vue"),
+      },
+      {
+        path: "/services",
+        name: "Services",
+        component: () => import("@/views/main/dictionary/Services.vue"),
+      },
+      {
+        path: "/partners",
+        name: "Partners",
+        component: () => import("@/views/main/dictionary/Partners.vue"),
+      },
+      {
         path: "",
         redirect: "infomation"
       }
