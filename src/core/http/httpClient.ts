@@ -11,30 +11,30 @@ class HttpClient {
     interceptors();
   }
 
-  get(url: string, config?: AxiosRequestConfig) {
-    return Vue.axios.get(url, config);
+  get<T>(url: string, config?: AxiosRequestConfig) {
+    return Vue.axios.get<any, T>(url, config);
   }
 
-  post(url: string, data?: any, config?: AxiosRequestConfig) {
-    return Vue.axios.post(url, data, config);
+  post<T>(url: string, data?: any, config?: AxiosRequestConfig) {
+    return Vue.axios.post<any, T>(url, data, config);
   }
 
-  put(url: string, data?: any, config?: AxiosRequestConfig) {
-    return Vue.axios.put(url, data, config);
+  put<T>(url: string, data?: any, config?: AxiosRequestConfig) {
+    return Vue.axios.put<any, T>(url, data, config);
   }
 
-  delete(url: string, config?: AxiosRequestConfig) {
-    return Vue.axios.delete(url, config);
+  delete<T>(url: string, config?: AxiosRequestConfig) {
+    return Vue.axios.delete<any, T>(url, config);
   }
 
-  upload(url: string, data?: any, callback?: (event: ProgressEvent) => void) {
-    return Vue.axios.post(url, data, {
+  upload<T>(url: string, data?: any, callback?: (event: ProgressEvent) => void) {
+    return Vue.axios.post<any, T>(url, data, {
       onUploadProgress: callback
     });
   }
 
-  download(url: string, data?: any, callback?: (event: ProgressEvent) => void) {
-    return Vue.axios.post(url, data, {
+  download<T>(url: string, data?: any, callback?: (event: ProgressEvent) => void) {
+    return Vue.axios.post<any, T>(url, data, {
       onDownloadProgress: callback
     });
   }

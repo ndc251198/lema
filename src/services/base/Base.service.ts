@@ -15,7 +15,7 @@ export class BaseService {
     this.baseUrl = baseUrl;
   }
 
-  buildApiUrl(path: string): string {
+  protected buildApiUrl(path: string): string {
     let url = ''
     const baseUrl = this.baseUrl.trimEnd('/');
     path = path.trimStart('/');
