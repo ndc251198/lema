@@ -1,5 +1,4 @@
 <template>
-  
     <div class="q-pa-lg row items-start q-gutter-lg">
       <div class="col">
         <q-card class="my-card text-center" @click="goToHotels">

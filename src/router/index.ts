@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 
+import store from '../store'
+
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -11,7 +13,10 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: "infomation",
-        component: () => import("@/views/main/dictionary/Infomation.vue")
+        component: () => import("@/views/main/dictionary/Infomation.vue"),
+        meta: {
+          requireLogin: true
+        }
       },
       {
         path: "dashboard",
@@ -80,5 +85,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLogin) && !localStorage.getItem('token')){
+    next({name: 'Login', query: {to: to.path}})
+  } else {
+    next()
+  }
+})
 
 export default router;

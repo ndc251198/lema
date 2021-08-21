@@ -45,17 +45,24 @@
     </q-btn-dropdown>
   </div>
 </template>
-<script>
-export default {
-    name: 'AccountSetting',
+
+<script lang="ts">
+import Vue from 'vue'
+import axios from 'axios'
+export default Vue.extend({
+  name: 'AccountSetting',
   data () {
     return {
     }
   },
   methods: {
     logout () {
+      axios.defaults.headers.common["Authorization"] = ""
+      localStorage.removeItem("token")
+      this.$store.commit('removeToken')
+      this.$router.push('/')
       this.$router.push(`/login`)
     }
   }
-}
+})
 </script>

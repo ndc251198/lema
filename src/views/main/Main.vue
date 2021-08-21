@@ -16,6 +16,7 @@ import LemaLayout from "@/controls/lema-layout/LemaLayout.vue";
 import LemaPageContainer from "@/controls/lema-page/LemaPageContainer.vue";
 import PageHeader from "@/components/commons/header/PageHeader.vue";
 import SideNav from "@/components/commons/sideNav/SideNav.vue";
+import axios from 'axios'
 
 export default Vue.extend({
   components: {
@@ -30,6 +31,17 @@ export default Vue.extend({
       mini: false
     }
   },
+  beforeCreate () {
+      this.$store.commit('initializeStore')
+
+      const token = this.$store.state.token
+
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = 'Token ' + token
+      } else {
+        axios.defaults.headers.common['Authorization'] = ''
+      }
+    },
 
   methods: {
     headerOnToggle() {
