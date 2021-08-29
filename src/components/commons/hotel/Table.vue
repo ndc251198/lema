@@ -1,7 +1,7 @@
 <template>
   <div class="table">
-    <div><q-btn class="float-right" color="primary" icon-right="add" label="Create" @click="showCreateRoom=true" /></div>
-     <table style="width: 100%" class="space">
+    <div><q-btn class="float-right" color="primary" icon-right="add" label="Create" @click="showCreateRoom=true"  /></div>
+     <table class="space full-width">
           <tr>
             <th>Room id</th>
             <th>Floor</th>
@@ -9,9 +9,9 @@
             <th>Day fee</th>
             <th></th>
           </tr>
-          <tr >
-              <td>Jill</td>
-              <td>Smith</td>
+          <tr v-for="room in rooms" :key="room.roomId">
+              <td>{{room.roomId}}</td>
+              <td>{{room.floor}}</td>
               <td>Mon</td>
               <td>Tue</td>
               <td>Wed</td>
@@ -19,29 +19,13 @@
               <td>Fri</td>
               <td>Sat</td>
               <td>Sun</td>
-              <td>50$</td>
+              <td>{{room.dayFee}}$</td>
               <td>...</td>
-            
-          </tr>
-          <tr class="demo">
-              <td>Jill</td>
-              <td>Smith</td>
-              <td>Mon</td>
-              <td>Tue</td>
-              <td>Wed</td>
-              <td>Thur</td>
-              <td>Fri</td>
-              <td>Sat</td>
-              <td>Sun</td>
-              <td>50$</td>
-              <td>...</td>
-            
           </tr>
           
-      </table>
-      <q-dialog persistent v-model="showCreateRoom">
-      <CreateRoom></CreateRoom>
-    </q-dialog>
+      </table> 
+        <CreateRoom :showCreateRoom="showCreateRoom" @close-popup='showCreateRoom=false' ></CreateRoom>
+   
   </div>
   
 </template>
@@ -50,6 +34,9 @@ import CreateRoom from '@/components/commons/form/formCreateRoom/CreateRoom.vue'
 import Vue from 'vue'
 export default Vue.extend({
   components: {CreateRoom},
+  props: {
+    rooms: Array,
+  },
   data () {
     return {
       showCreateRoom: false

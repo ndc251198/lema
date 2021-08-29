@@ -60,7 +60,6 @@ export default Vue.extend({
       axios.defaults.headers.common["Authorization"] = ""
       localStorage.removeItem("token")
       this.$store.commit('removeToken')
-      this.$router.push('/')
       this.$router.push(`/login`)
     }
   }

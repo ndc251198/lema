@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 
-import store from '../store'
 
 Vue.use(VueRouter);
 
@@ -14,9 +13,6 @@ const routes: Array<RouteConfig> = [
       {
         path: "infomation",
         component: () => import("@/views/main/dictionary/Infomation.vue"),
-        meta: {
-          requireLogin: true
-        }
       },
       {
         path: "dashboard",
@@ -63,6 +59,9 @@ const routes: Array<RouteConfig> = [
         redirect: "infomation"
       }
     ],
+    meta: {
+      requireLogin: true
+    }
   },
   {
     path: "/login",

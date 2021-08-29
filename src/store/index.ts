@@ -1,18 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import HotelsModule from './module/hotels'
+import HotelModule from './module/hotel'
+import ServiceModule from './module/services'
+import PartnerModule from './module/partners'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     isAuthenticated: false,
-    token : ''
+    token : '',
+    hotels: []
   },
   mutations: {
     initializeStore(state) {
-      console.log('init')
       if (localStorage.getItem('token')) {
-        state.token = localStorage.getItem('token') ? 'fix type': ''
+        state.token = localStorage.getItem('token') ?? ''
         state.isAuthenticated = true
       } else {
         state.token = ''
@@ -28,8 +32,14 @@ export default new Vuex.Store({
       state.isAuthenticated = false
     },
   },
+  getters: {
+  },
   actions: {
   },
   modules: {
+    HotelsModule,
+    HotelModule,
+    ServiceModule,
+    PartnerModule
   }
 })

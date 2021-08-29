@@ -1,26 +1,23 @@
 <template>
-  <div class="row">
-    <div v-for='index in 10' :key='index' class="col-4">
-      <div class="q-pa-md">
-      <div class="row">
-        <div class="col-10">
-          <q-card class="my-card " @click="demo1(index)">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-            <div class="absolute-bottom text-subtitle2 text-center">
-              Hotel {{index}}
+      <div class="q-pa-md q-mg-md">
+      <div class="row justify-start q-gutter-lg">
+        <div class="col-1" v-for='hotel in getHotels' :key='hotel'>
+          <q-card class="my-card text-center" @click="goToHotel(hotel.idHotel)">
+            <q-card-section>
+            <i class="fas fa-hotel fa-5x"></i>
+            </q-card-section>
+            <q-card-section>
+              <div class="absolute-bottom text-subtitle2 text-center">
+               {{hotel.nameHotel}}
             </div>
-            </q-img>
+            </q-card-section>
           </q-card>
         </div>
-      </div>
-      </div>
-    </div>
 
-    <div class="col-4 q-pa-md">
-      <div class= "row" style="font-size: 23px;">
-      <q-card class="my-card col-10 text-center" style="height: 100%; color: white; background-color: grey" @click="showCreateHotel=true">
+        <div class="col-1">
+      <q-card class="my-card col-10 text-center bg-primary text-white" @click="showCreateHotel=true">
           <q-card-section>
-           <i class="fas fa-plus fa-10x"></i>
+           <i class="fas fa-plus fa-5x"></i>
           </q-card-section>
           <q-card-section>
               <div class="absolute-bottom text-subtitle2 text-center">
@@ -28,13 +25,9 @@
             </div>
           </q-card-section>
         </q-card>
-
-        <q-dialog v-model="showCreateHotel">
-        <CreateHotel style="width: 700px; max-width: 80vw;"></CreateHotel>
-        
-        </q-dialog>
     </div>
-    </div>
+      </div>
+    <CreateHotel :showCreateHotel="showCreateHotel"  @close-popup="showCreateHotel=false"></CreateHotel>
   </div>
   
 </template>
@@ -42,18 +35,29 @@
 <script lang="ts">
 import Vue from 'vue'
 import CreateHotel from '@/components/commons/form/formCreateHotel/CreateHotel.vue'
+import axios from 'axios'
+import {
+    mapGetters,
+    mapActions
+  } from "vuex";
+
 export default Vue.extend({
-  name: "setting",
+  name: "hotels",
   components: {CreateHotel},
   data () {
     return {
-        showCreateHotel: false
+        showCreateHotel: false,
     }
   },
+  created() {
+    this.fetchHotels()
+  },
+  computed: mapGetters(["getHotels"]),
   methods: {
-    demo1 (id: string) {
+    ...mapActions(['fetchHotels']),
+    goToHotel (id: string) {
       this.$router.push(`/hotel/${id}`)
-    }
+    },
   }
 })
 </script>

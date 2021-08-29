@@ -18,6 +18,8 @@ Vue.use(VueAxios, axios);
 Vue.use(VueI18n);
 Vue.config.productionTip = false;
 
+//axios.defaults.baseURL = "https://lema1234.herokuapp.com/api/v1"
+
 appInitial().then(() => {
   new Vue({
     router,

@@ -9,28 +9,16 @@
             <th>Don vi tinh</th>
             <th></th>
           </tr>
-          <tr >
-              <td>Jill</td>
-              <td>Smith</td>
-              <td>Sun</td>
-              <td>50$</td>
-              <td><q-icon name="delete_outline" size="md" @click="showDeleteNotice=true"></q-icon></td>
-            
+          <tr v-for="service in getServices" :key="service.id">
+              <td>{{service.id}}</td>
+              <td>{{service.name}}</td>
+              <td>{{service.price}}</td>
+              <td>{{service.unit}}</td>
+              <td><q-icon name="delete_outline" size="md" @click="showDeleteModal(service.id)"></q-icon></td>
           </tr>
-          <tr class="demo">
-              <td>Jill</td>
-              <td>Smith</td>
-             
-              <td>Sun</td>
-              <td>50$</td>
-              <td><q-icon name="delete_outline" size="md" @click="showDeleteNotice=true"></q-icon></td>
-            
-          </tr>
-          
       </table>
-      <q-dialog persistent v-model="showCreateService">
-      <CreateService></CreateService>
-    </q-dialog>
+      <CreateService :showCreateService='showCreateService' @close-popup='showCreateService=false'></CreateService>
+    
     <q-dialog persistent v-model="showDeleteNotice">
       <q-card>
         <q-card-section>
@@ -38,8 +26,8 @@
         </q-card-section>
 
         <q-card-actions align="center">
-          <q-btn flat label="Huy" color="primary" v-close-popup />
-          <q-btn push label="Luu" color="primary" v-close-popup />
+          <q-btn flat label="Khong" color="primary" v-close-popup />
+          <q-btn push label="Dong y" color="primary" @click="deleteService()" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -48,15 +36,40 @@
 </template>
 <script lang="ts">
 import CreateService from '@/components/commons/service/formCreateService.vue'
+import services from '@/store/module/services'
 import Vue from 'vue'
+import {mapGetters, mapActions} from 'vuex'
 export default Vue.extend({
   components: {CreateService},
   data () {
     return {
       showCreateService: false,
-      showDeleteNotice: false
+      showDeleteNotice: false,
+      serviceId : ''
     }
-  }
+  },
+  created() {
+    this.fetchServices()
+  },
+  computed: {
+    ...mapGetters(['getServices'])
+  },
+   methods: {
+     ...mapActions(['fetchServices', 'removeService']),
+     deleteService () {
+       this.removeService(this.serviceId) 
+       this.showDeleteNotice = false
+       this.$q.notify({
+                icon: 'done',
+                color: 'positive',
+                message: 'Success'
+            })
+     },
+     showDeleteModal(serviceId: string) {
+       this.serviceId = serviceId
+       this.showDeleteNotice = true
+     }
+   }
 })
 </script>
 <style>
